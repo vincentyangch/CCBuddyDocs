@@ -34,6 +34,7 @@ Design specs define the architecture, data models, config schemas, and API contr
 
 | File | Description |
 |------|-------------|
+| **`ccbuddy-design.md`** | **Main design spec — overall system architecture, module breakdown, and config schema** |
 | `scheduler-design.md` | Scheduler system: cron, heartbeat, webhooks, proactive delivery |
 | `self-evolving-skills-design.md` | Self-evolving skill creation and refinement pipeline |
 | `apple-calendar-design.md` | Apple Calendar read/write integration |
