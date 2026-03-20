@@ -1,3 +1,5 @@
+**[中文版](README.zh-CN.md)**
+
 # CCBuddy Design Docs
 
 Design documents for **CCBuddy** — a TypeScript monorepo that wraps the Claude Code SDK/CLI into an always-on personal AI agent with scheduled tasks, multi-platform messaging, memory, and extensible skills.

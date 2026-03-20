@@ -1,3 +1,5 @@
+**[English](README.md)**
+
 # CCBuddy 设计文档
 
 **CCBuddy** 的设计文档 — 一个基于 TypeScript 的 monorepo 项目，将 Claude Code SDK/CLI 封装为一个常驻运行的个人 AI 助手，支持定时任务、多平台消息、记忆系统和可扩展技能。
