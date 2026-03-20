@@ -26,26 +26,28 @@ CCBuddy is a personal AI assistant that runs on a Mac Mini and is accessible via
 
 Monorepo with independent module packages, orchestrated by a process manager, communicating through an abstract event bus.
 
-```
-                    ┌─────────────────────────────────────┐
-                    │            Orchestrator              │
-                    │  (process manager, startup/shutdown) │
-                    └──────────────┬──────────────────────┘
-                                   │ manages
-        ┌──────────┬───────────┬───┴────┬──────────┬──────────┐
-        ▼          ▼           ▼        ▼          ▼          ▼
-   ┌─────────┐ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐
-   │ Gateway │ │ Agent  │ │ Memory │ │Scheduler│ │Heartbeat│ │Webhooks│
-   └────┬────┘ └────────┘ └────────┘ └────────┘ └────────┘ └────────┘
-        │                        ▲
-        │          Event Bus (pub/sub)
-        │    ◄─────────────────────────────────────────────────►
-        │
-   ┌────┴──────────────┐
-   │  Platform Adapters │
-   ├────────┬───────────┤
-   │Discord │ Telegram  │  (+ future: WhatsApp, iMessage, etc.)
-   └────────┴───────────┘
+```mermaid
+graph TD
+    Orchestrator["Orchestrator<br/><i>process manager, startup/shutdown</i>"]
+
+    Orchestrator -->|manages| Gateway
+    Orchestrator -->|manages| Agent
+    Orchestrator -->|manages| Memory
+    Orchestrator -->|manages| Scheduler
+    Orchestrator -->|manages| Heartbeat
+    Orchestrator -->|manages| Webhooks
+
+    Gateway <-->|pub/sub| EventBus["Event Bus"]
+    Agent <-->|pub/sub| EventBus
+    Memory <-->|pub/sub| EventBus
+    Scheduler <-->|pub/sub| EventBus
+    Heartbeat <-->|pub/sub| EventBus
+    Webhooks <-->|pub/sub| EventBus
+
+    Gateway --> Adapters["Platform Adapters"]
+    Adapters --> Discord
+    Adapters --> Telegram
+    Adapters --> Future["+ WhatsApp, iMessage, ..."]
 ```
 
 ### Message Flow (Incoming Chat)
